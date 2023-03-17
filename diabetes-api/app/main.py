@@ -8,7 +8,7 @@ from loguru import logger
 from app.api import api_router
 from app.config import settings, setup_app_logging
 
-# setup logging as early as possible
+# setup logging
 setup_app_logging(config=settings)
 
 
@@ -24,8 +24,8 @@ def index(request: Request) -> Any:
     """Basic HTML response."""
     body = (
         "<html>"
-        "<body style='padding: 10px;'>"
-        "<h1>Welcome to the API</h1>"
+        "<body style='padding: 20px;'>"
+        "<h1>Diabetes Regression Model API</h1>"
         "<div>"
         "Check the docs: <a href='/docs'>here</a>"
         "</div>"
@@ -51,7 +51,7 @@ if settings.BACKEND_CORS_ORIGINS:
 
 
 if __name__ == "__main__":
-    # Use this for debugging purposes only
+    # Debugging purposes only
     logger.warning("Running in development mode. Do not run like this in production.")
     import uvicorn
 

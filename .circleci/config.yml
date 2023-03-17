@@ -1,4 +1,4 @@
-version: 2.1
+version: 2
 
 orbs:
   semver-orb: tv2norge/semver-orb@0.0.1
