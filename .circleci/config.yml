@@ -49,7 +49,7 @@ jobs:
             eval $(aws ecr get-login --no-include-email --region ap-southeast-2)
             make build-ml-api-aws tag-ml-api push-ml-api-aws
             eval $(aws ecs get-login --no-include-email --region ap-southeast-2)
-            aws ecs update-service --cluster diabetes-api-cluster --service custom-service --task-definition  first-run-task-definition --force-new-deployment
+            aws ecs update-service --cluster api-container-service --service custom-service --task-definition  first-run-task-definition --force-new-deployment
 
 
 tags_only: &tags_only
