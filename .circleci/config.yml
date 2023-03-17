@@ -1,4 +1,8 @@
-version: 2
+version: 2.1
+
+orbs:
+  semver-orb: tv2norge/semver-orb@0.0.1
+
 
 defaults: &defaults
   docker:
