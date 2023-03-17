@@ -1,11 +1,11 @@
-import math
+from math import isclose
 
 import numpy as np
 import pandas as pd
 from fastapi.testclient import TestClient
 
 
-def test_make_prediction(client: TestClient, test_data: pd.DataFrame) -> None:
+def test_make_batch_prediction(client: TestClient, test_data: pd.DataFrame) -> None:
     # Given
     payload = {
         # ensure pydantic plays well with np.nan
@@ -23,4 +23,5 @@ def test_make_prediction(client: TestClient, test_data: pd.DataFrame) -> None:
     prediction_data = response.json()
     assert prediction_data["predictions"]
     assert prediction_data["errors"] is None
-    # assert math.isclose(prediction_data["predictions"][0], 113422, rel_tol=100)
+    assert len(prediction_data["predictions"]) == 20
+    assert isclose(prediction_data["predictions"][0], 225.89193139816433, abs_tol=1e-8)
