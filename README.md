@@ -1,17 +1,41 @@
+# The diabetes ml model API  
 
-## The diabetes ml model API  
 
-TODO: statis ip with load balancer
-### Presently, the API is running and available at  
+## Overview
+Development considerations:  
 
-http://3.104.53.120:5000/
-
-Using FastAPI, the documentation is interactive and available at:  
-
-http://3.104.53.120:5000/docs  
-
-where the healthcheck, stream and batch inference are all available
+1. Unit and Integration tested api  
+2. Pathing and environment management via tox and poetry  
+3. CI coordinated via Circleci yaml config - runs the app, performs formatting checks and linting, runs tests with semantic versioning  
 
 
 
+## Maintainability  
+### tox  
+ venv management and test command line tool  
+ Using Tox we can (on multiple operating systems):  
+ - Eliminate PYTHONPATH challenges when running scripts/tests  
+ - Streamline model training, model publishing  
 
+on the CLI:  
+
+tox run -e test_app  
+tox run -e run  
+tox run -e checks  
+
+these are easiy integrated into the CI pipeline  
+
+### Security and privacy
+External package index (GemFury is used for convenience, S3 can be used but requires additional set up i.e. SSL certificate)  
+
+CircleCI is used for CICD pipeline construction and monitoring, a service that integrates will with common version control repositories, secrets are managed by this service  
+
+AWS - users user groups and roles are configured via AWS IAM  
+
+## Infrastructure - API
+**ECR**: A private container repository hosted on AWS, options to manage lifecycles, and access configuration via KMS and IAM.
+**ECS**: Fargate - a managed serverless and elastically scaling compute service that runs containers in the ECR 
+
+## TODO
+Infrastructure as code templating with terraform  
+Static IP with application load balancer  

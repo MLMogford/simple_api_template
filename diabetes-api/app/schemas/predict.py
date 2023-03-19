@@ -16,9 +16,11 @@ class DiabetesDataInputs(BaseModel):
     class Config:
         schema_extra = {
             "example": {
-                "inputs": {
-                    "bmi": 0.20,
-                }
+                "inputs": [
+                    {
+                        "bmi": 0.20,
+                    }
+                ]
             }
         }
 
