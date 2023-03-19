@@ -8,14 +8,14 @@ from regression_model.processing.data_manager import DataInputGeneration
 
 from app.main import app
 
+
 @pytest.fixture()
-def dig():
+def dig() -> DataInputGeneration:
     return DataInputGeneration()
 
 
-
 @pytest.fixture()
-def test_data(dig) -> pd.DataFrame:
+def test_data(dig: DataInputGeneration) -> pd.DataFrame:
     return dig.load_dataset(file_name=config.app_config.testing_data_file)
 
 

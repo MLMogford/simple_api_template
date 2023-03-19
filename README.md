@@ -1,7 +1,7 @@
 
 ## The diabetes ml model API  
 
-
+TODO: statis ip with load balancer
 ### Presently, the API is running and available at  
 
 http://3.104.53.120:5000/

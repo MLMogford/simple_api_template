@@ -4,7 +4,7 @@ from types import FrameType
 from typing import List, cast
 
 from loguru import logger
-from pydantic import AnyHttpUrl, BaseSettings
+from pydantic import AnyHttpUrl, BaseSettings, tools
 
 
 class LoggingSettings(BaseSettings):
@@ -18,10 +18,10 @@ class Settings(BaseSettings):
     logging: LoggingSettings = LoggingSettings()
 
     BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = [
-        "http://localhost:3000",
-        "http://localhost:8000",
-        "https://localhost:3000",
-        "https://localhost:8000",
+        tools.parse_obj_as(AnyHttpUrl, "http://localhost:3000"),
+        tools.parse_obj_as(AnyHttpUrl, "http://localhost:8000"),
+        tools.parse_obj_as(AnyHttpUrl, "https://localhost:3000"),
+        tools.parse_obj_as(AnyHttpUrl, "https://localhost:8000"),
     ]
 
     PROJECT_NAME: str = "Diabetes  Prediction API"
@@ -47,6 +47,7 @@ class InterceptHandler(logging.Handler):
             level,
             record.getMessage(),
         )
+
 
 def setup_app_logging(config: Settings) -> None:
     LOGGERS = ("uvicorn.asgi", "uvicorn.access")
