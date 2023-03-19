@@ -19,7 +19,7 @@ class DiabetesDataInputs(BaseModel):
                 "inputs": [
                     {
                         "bmi": 0.20,
-                    }
+                    },
                 ]
             }
         }

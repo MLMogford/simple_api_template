@@ -24,7 +24,7 @@ class Settings(BaseSettings):
         tools.parse_obj_as(AnyHttpUrl, "https://localhost:8000"),
     ]
 
-    PROJECT_NAME: str = "Diabetes  Prediction API"
+    PROJECT_NAME: str = "Diabetes Prediction API"
 
     class Config:
         case_sensitive = True

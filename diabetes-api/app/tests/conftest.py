@@ -20,6 +20,12 @@ def test_data(dig: DataInputGeneration) -> pd.DataFrame:
 
 
 @pytest.fixture()
+def test_stream_data(dig: DataInputGeneration) -> pd.DataFrame:
+    data = dig.load_dataset(file_name=config.app_config.testing_data_file)
+    return data.head(1)
+
+
+@pytest.fixture()
 def client() -> Generator:
     with TestClient(app) as _client:
         yield _client

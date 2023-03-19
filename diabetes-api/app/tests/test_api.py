@@ -4,10 +4,11 @@ import pandas as pd
 from fastapi.testclient import TestClient
 
 
-def test_make_stream_prediction(client: TestClient, test_data: pd.DataFrame) -> None:
+def test_make_stream_prediction(
+    client: TestClient, test_stream_data: pd.DataFrame
+) -> None:
     # Given
-    stream_data = test_data.head(1)
-    payload = {"inputs": stream_data.to_dict(orient="records")}
+    payload = {"inputs": test_stream_data.to_dict(orient="records")}
 
     # When
     response = client.post(
