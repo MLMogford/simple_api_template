@@ -11,18 +11,17 @@ class PredictionResults(BaseModel):
 
 
 class DiabetesDataInputs(BaseModel):
-    inputs: DiabetesDataInputSchema
+    inputs: List[DiabetesDataInputSchema]
 
-    class Config:
-        schema_extra = {
-            "example": {
-                "inputs": [
-                    {
-                        "bmi": 0.20,
-                    },
-                ]
-            }
+    schema_extra = {
+        "example": {
+            "inputs":
+                {
+                    "bmi": 0.20,
+                }
+
         }
+    }
 
 
 class MultipleDiabetesDataInputs(BaseModel):
