@@ -54,7 +54,7 @@ async def predict_stream(input_data: schemas.DiabetesDataInputs) -> dict:
     "/predict_batch", response_model=schemas.PredictionResults, status_code=200
 )
 async def predict_batch(input_data: schemas.MultipleDiabetesDataInputs) -> dict:
-    """Make stream predictions with the regression model.
+    """Make batch predictions with the regression model.
     :param data: json with multiple set of input parameters
     :return:
         results: json prediction result
