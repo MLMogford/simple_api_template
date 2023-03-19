@@ -1,5 +1,4 @@
 import json
-from typing import Any
 
 import numpy as np
 import pandas as pd
@@ -17,8 +16,9 @@ api_router = APIRouter()
 
 @api_router.get("/health", response_model=schemas.Health, status_code=200)
 def health() -> dict:
-    """
-    Root Get
+    """Root Get.
+    :return:
+        health: dict with api metadata
     """
     health = schemas.Health(
         name=settings.PROJECT_NAME, api_version=__version__, model_version=model_version
@@ -30,11 +30,12 @@ def health() -> dict:
 @api_router.post(
     "/predict_stream", response_model=schemas.PredictionResults, status_code=200
 )
-async def predict_stream(input_data: schemas.DiabetesDataInputs) -> Any:
+async def predict_stream(input_data: schemas.DiabetesDataInputs) -> dict:
+    """Make stream predictions with the regression model.
+    :param data: json with single set of input parameters
+    :return:
+        results: json prediction result
     """
-    Make stream predictions with the regression model
-    """
-
     input_df = pd.DataFrame(jsonable_encoder(input_data.inputs))
 
     logger.info(f"Making prediction on inputs: {input_data.inputs}")
@@ -52,11 +53,12 @@ async def predict_stream(input_data: schemas.DiabetesDataInputs) -> Any:
 @api_router.post(
     "/predict_batch", response_model=schemas.PredictionResults, status_code=200
 )
-async def predict_batch(input_data: schemas.MultipleDiabetesDataInputs) -> Any:
+async def predict_batch(input_data: schemas.MultipleDiabetesDataInputs) -> dict:
+    """Make stream predictions with the regression model.
+    :param data: json with multiple set of input parameters
+    :return:
+        results: json prediction result
     """
-    Make batch predictions with the regression model
-    """
-
     input_df = pd.DataFrame(jsonable_encoder(input_data.inputs))
     # TODO add async await
     logger.info(f"Making prediction on inputs: {input_data.inputs}")
