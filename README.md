@@ -6,7 +6,7 @@ Development considerations:
 
 1. Unit and Integration tested api  
 2. Pathing and environment management via tox and poetry  
-3. CI coordinated via Circleci yaml config - runs the app, performs formatting checks and linting, runs tests with semantic versioning  
+3. CI coordinated via Circleci yaml config - runs the app, performs formatting checks and linting, runs tests with semantic versioning, and pushes the new container to ECR and updates the contatiner in ECS   
 
 
 
@@ -38,4 +38,4 @@ AWS - users user groups and roles are configured via AWS IAM
 
 ## TODO
 Infrastructure as code templating with terraform  
-Static IP with application load balancer  
+Static IP with a network load balancer load balancer  
