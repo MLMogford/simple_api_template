@@ -30,7 +30,7 @@ def health() -> dict:
 @api_router.post(
     "/predict_stream", response_model=schemas.PredictionResults, status_code=200
 )
-async def predict_stream(input_data: schemas.MultipleDiabetesDataInputs) -> dict:
+async def predict_stream(input_data: schemas.DiabetesDataInputs) -> dict:
     """Make stream predictions with the regression model.
     :param data: json with single set of input parameters
     :return:
