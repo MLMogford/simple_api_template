@@ -26,16 +26,16 @@ tox run -e checks
 these are easiy integrated into the CI pipeline  
 
 ### Security and privacy
-External package index (GemFury is used for convenience, S3 can be used but requires additional set up i.e. SSL certificate)  
+External package index (GemFury is used for convenience, model package groups can be used for full deployment)  
 
 CircleCI is used for CI/CD pipeline construction and monitoring, a service that integrates will with common version control repositories, secrets are managed by this service  
 
 AWS - users user groups and roles are configured via AWS IAM  
 
-## Infrastructure - API
-**ECR**: A private container repository hosted on AWS, options to manage lifecycles, and access configuration via KMS and IAM.
-**ECS**: Fargate - a managed serverless and elastically scaling compute service that runs containers in the ECR 
+## Infrastructure - API  
+**ECR**: A private container repository hosted on AWS, options to manage lifecycles, and access configuration via KMS and IAM.  
+**ECS**: Fargate - a managed serverless and elastically scaling compute service that runs containers in the ECR  
 
-## TODO
+## TODO  
 Infrastructure as code templating with terraform  
-Static IP with a network load balancer
+Static IP with a network load balancer  
